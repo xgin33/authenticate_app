@@ -1,8 +1,9 @@
 import 'package:authenticate_app/controllers/controller.dart';
+import 'package:authenticate_app/widgets/appbar_connection.dart';
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 
-import 'other.dart';
+import 'login.dart';
 
 class Home extends StatelessWidget {
 
@@ -11,8 +12,9 @@ class Home extends StatelessWidget {
 
   @override
   Widget build(context) => Scaffold(
+
     // Use Obx(()=> to update Text() whenever count is changed.
-      appBar: AppBar(title: Text("Flutter Demo Home Page")),
+      appBar: AppBarConnection("Flutter Demo Home Page"),
 
       // Replace the 8 lines Navigator.push by a simple Get.to(). You don't need context
       body: Center(
@@ -23,7 +25,6 @@ class Home extends StatelessWidget {
             'You have pushed the button this many times:',
           ),
           Obx(() => Text(c.count.string)),
-          RaisedButton(child: Text("Go to Other"), onPressed: () => Get.to(Other()))
         ],
       ),
 

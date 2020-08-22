@@ -3,6 +3,6 @@ import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 
 void main() {
-  runApp(GetMaterialApp(home: Home(),));
+  runApp(GetMaterialApp(debugShowCheckedModeBanner:false, home: Home(),));
 }
 
