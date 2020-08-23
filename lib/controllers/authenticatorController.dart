@@ -1,6 +1,7 @@
 import 'package:authenticate_app/controllers/controllers.dart';
 import 'package:authenticate_app/services/database.dart';
 import 'package:authenticate_app/ui/models/user.dart';
+import 'package:authenticate_app/ui/views/home.dart';
 import 'package:get/get.dart';
 import 'package:firebase_auth/firebase_auth.dart';
 
@@ -44,16 +45,18 @@ class AuthenticatorController extends GetxController{
       try
       {
         await _firebaseAuth.signInWithEmailAndPassword(email: email, password: password);
+        Get.to(Home());
       }catch(e)
       {
         Get.snackbar("Error sign account", e.toString(),snackPosition: SnackPosition.BOTTOM);
       }
     }
 
-  void signOut(String email, String password) async {
+  void signOut() async {
     try
     {
       await _firebaseAuth.signOut();
+      Get.to(Home());
     }catch(e)
     {
       Get.snackbar("Error signing out", e.toString(),snackPosition: SnackPosition.BOTTOM);

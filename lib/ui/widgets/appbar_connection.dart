@@ -56,6 +56,12 @@ class AppBarConnection  extends GetWidget<AuthenticatorController> implements Pr
           }
         },
       ),
+      IconButton(
+        icon: Icon(Icons.exit_to_app),
+        onPressed: () {
+          controller.signOut();
+        },
+      ),
     ]);
   }
 
