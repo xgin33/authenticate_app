@@ -1,7 +1,6 @@
 import 'package:authenticate_app/controllers/controllers.dart';
 import 'package:authenticate_app/services/database.dart';
 import 'package:authenticate_app/ui/models/user.dart';
-import 'package:firebase_core/firebase_core.dart';
 import 'package:get/get.dart';
 import 'package:firebase_auth/firebase_auth.dart';
 

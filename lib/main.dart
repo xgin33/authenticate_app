@@ -1,16 +1,20 @@
-import 'package:authenticate_app/utils/root.dart';
+import 'package:authenticate_app/ui/views/home.dart';
+import 'package:firebase_core/firebase_core.dart';
 
-import 'controllers/bindings/authBinding.dart';
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 
-void main()  async {
+import 'controllers/controllers.dart';
 
+void main()  async {
+  WidgetsFlutterBinding.ensureInitialized();
+  await Firebase.initializeApp();
+  Get.put<AuthenticatorController>(AuthenticatorController());
+  Get.put<UserController>(UserController());
 
   runApp(
-      GetMaterialApp( initialBinding: AuthBinding(),
+      GetMaterialApp(
                       debugShowCheckedModeBanner:false,
-
-                      home: Root(),));
+                      home: Home(),));
 }
 

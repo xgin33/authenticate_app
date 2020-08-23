@@ -10,12 +10,10 @@ class Root extends GetWidget<AuthenticatorController> {
     return GetX(
 
       initState: (_) async {
-        Get.put<UserController>(UserController());
+
       },
 
       builder: (_) {
-        String userUid = Get.find<AuthenticatorController>().user?.uid;
-        print('User is ' + userUid);
         return Home();
       },
     );

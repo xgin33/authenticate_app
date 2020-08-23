@@ -1,23 +1,30 @@
-
-
+import 'package:authenticate_app/controllers/controllers.dart';
+import 'package:authenticate_app/services/database.dart';
 import 'package:authenticate_app/ui/views/connection/login.dart';
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 
-class AppBarConnection  extends StatelessWidget implements PreferredSizeWidget {
+class AppBarConnection  extends GetWidget<AuthenticatorController> implements PreferredSizeWidget {
   final String title;
+  final String firstName;
 
-  const AppBarConnection({
+   AppBarConnection({
     Key key,
     @required this.title,
-  }) : super(key: key);
-
+     @required this.firstName
+  });
 
 
   @override
   Widget build(BuildContext context) {
-
-    return appBarNotConnected();
+    String userUid = Get.find<AuthenticatorController>().user?.uid;
+    if(userUid != null)
+    {
+      return appBarConnected(userUid);
+    }
+    else {
+      return appBarNotConnected();
+    }
 
   }
 
@@ -32,12 +39,23 @@ class AppBarConnection  extends StatelessWidget implements PreferredSizeWidget {
   }
 
   // User is connected
-  Widget appBarConnected(String firstName)
+  Widget appBarConnected(String userUid)
   {
     return AppBar(title: Text(title), actions: <Widget>[
-      IconButton(
-          icon: new Icon(Icons.account_box),
-          onPressed: () => Get.to(Login())),
+      GetX<UserController>(
+
+        initState: (_) async {
+          Get.find<UserController>().user =
+          await Database().getUser(userUid);
+        },
+        builder: (_) {
+          if (_.user.firstName != null) {
+            return Text( _.user.firstName);
+          } else {
+            return Text("loading...");
+          }
+        },
+      ),
     ]);
   }
 
