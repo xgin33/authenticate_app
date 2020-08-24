@@ -50,9 +50,11 @@ class AppBarConnection  extends GetWidget<AuthenticatorController> implements Pr
         },
         builder: (_) {
           if (_.user.firstName != null) {
-            return Text( _.user.firstName);
+            return Center(
+                child: Text( _.user.firstName)
+            );
           } else {
-            return Text("loading...");
+            return Center( child:Text("loading..."));
           }
         },
       ),

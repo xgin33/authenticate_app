@@ -12,6 +12,7 @@ class Database {
         "firstName":user.firstName,
         "lastName": user.lastName,
         "email": user.email,
+        "profile" : user.profile,
       });
       return true;
     } catch (e) {

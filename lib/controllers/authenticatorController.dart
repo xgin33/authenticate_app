@@ -18,7 +18,7 @@ class AuthenticatorController extends GetxController{
       _firebaseUser.bindStream(_firebaseAuth.authStateChanges());
     }
 
-    void createUser(String firstName, String lastName,String email, String password)async
+    void createUser(String firstName, String lastName,String email, String password, String profile)async
     {
       try
       {
@@ -29,6 +29,7 @@ class AuthenticatorController extends GetxController{
           firstName: firstName,
           lastName: lastName,
           email: _userCredential.user.email,
+          profile: profile
         );
         if (await Database().createNewUser(_user)) {
           Get.find<UserController>().user = _user;
@@ -65,3 +66,8 @@ class AuthenticatorController extends GetxController{
 
 }
 
+enum AuthStatus {
+  NOT_DETERMINED,
+  NOT_LOGGED_IN,
+  LOGGED_IN,
+}

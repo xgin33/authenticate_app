@@ -50,7 +50,7 @@ class SignUp extends GetWidget<AuthenticatorController> {
                 child: Text("Sign Up"),
                 onPressed: () {
                   controller.createUser(firstNameController.text,lastNameController.text,
-                      emailController.text, passwordController.text);
+                      emailController.text, passwordController.text,"");
                 },
               )
             ],
