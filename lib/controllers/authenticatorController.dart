@@ -18,6 +18,8 @@ class AuthenticatorController extends GetxController{
       _firebaseUser.bindStream(_firebaseAuth.authStateChanges());
     }
 
+
+
     void createUser(String firstName, String lastName,String email, String password, String profile)async
     {
       try

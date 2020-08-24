@@ -17,4 +17,14 @@ class UserModel {
     email = documentSnapshot.get("email");
     profile = documentSnapshot.get("profile");
   }
+
+  String fullName()
+  {
+    return firstName +" "+ lastName;
+  }
+  String initial()
+  {
+    return firstName[0]+lastName[0];
+  }
+
 }
