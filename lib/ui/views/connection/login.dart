@@ -1,11 +1,7 @@
-
 import 'package:authenticate_app/controllers/controllers.dart';
 import 'package:authenticate_app/ui/views/connection/signup.dart';
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
-
-
-
 
 class Login extends GetWidget<AuthenticatorController> {
   final TextEditingController emailController = TextEditingController();

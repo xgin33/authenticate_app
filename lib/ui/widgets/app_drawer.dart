@@ -1,11 +1,11 @@
 import 'package:authenticate_app/controllers/controllers.dart';
-import 'package:authenticate_app/services/database.dart';
+import 'package:authenticate_app/firebase/dao/user_dao.dart';
 import 'package:authenticate_app/ui/views/connection/login.dart';
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 
 class AppDrawer extends GetWidget<AuthenticatorController> {
-  String userUid = Get.find<AuthenticatorController>().user?.uid;
+  final String userUid = Get.find<AuthenticatorController>().user?.uid;
 
   ///Header Part
   Widget _createHeader() {
@@ -27,20 +27,18 @@ class AppDrawer extends GetWidget<AuthenticatorController> {
                 width: 5.0,
               ),
               IconButton(
-                icon: Icon(Icons.exit_to_app),
-                onPressed: () {
-                  Get.to(Login());
-                }),
+                  icon: Icon(Icons.exit_to_app),
+                  onPressed: () {
+                    Get.to(Login());
+                  }),
               Container(
-              width: 5.0,
-            ),
-            new GestureDetector(
-              onTap: ()
-                {
-                  Get.to(Login());
-                },
-              child:Text("Se connecter ou créer un compte")),
-
+                width: 5.0,
+              ),
+              new GestureDetector(
+                  onTap: () {
+                    Get.to(Login());
+                  },
+                  child: Text("Se connecter ou créer un compte")),
             ])));
   }
 
@@ -54,7 +52,7 @@ class AppDrawer extends GetWidget<AuthenticatorController> {
           child: GetX<UserController>(
             initState: (_) async {
               Get.find<UserController>().user =
-                  await Database().getUser(userUid);
+                  await UserDao().getUser(userUid);
             },
             builder: (_) {
               if (_.user.firstName != null) {

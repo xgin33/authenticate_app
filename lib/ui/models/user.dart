@@ -18,13 +18,11 @@ class UserModel {
     profile = documentSnapshot.get("profile");
   }
 
-  String fullName()
-  {
-    return firstName +" "+ lastName;
-  }
-  String initial()
-  {
-    return firstName[0]+lastName[0];
+  String fullName() {
+    return firstName + " " + lastName;
   }
 
+  String initial() {
+    return firstName[0] + lastName[0];
+  }
 }

@@ -2,7 +2,6 @@ import 'package:authenticate_app/controllers/authenticatorController.dart';
 import 'package:flutter/material.dart';
 import 'package:get/state_manager.dart';
 
-
 class SignUp extends GetWidget<AuthenticatorController> {
   final TextEditingController lastNameController = TextEditingController();
   final TextEditingController firstNameController = TextEditingController();
@@ -12,12 +11,11 @@ class SignUp extends GetWidget<AuthenticatorController> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-
       appBar: AppBar(
         title: Text("Sign Up"),
       ),
-      body:SingleChildScrollView( child:
-      Center(
+      body: SingleChildScrollView(
+          child: Center(
         child: Padding(
           padding: const EdgeInsets.all(20.0),
           child: Column(
@@ -52,15 +50,18 @@ class SignUp extends GetWidget<AuthenticatorController> {
               FlatButton(
                 child: Text("Sign Up"),
                 onPressed: () {
-                  controller.createUser(firstNameController.text,lastNameController.text,
-                      emailController.text, passwordController.text,"");
+                  controller.createUser(
+                      firstNameController.text,
+                      lastNameController.text,
+                      emailController.text,
+                      passwordController.text,
+                      "");
                 },
               )
             ],
           ),
         ),
-      )
-      ),
+      )),
     );
   }
 }

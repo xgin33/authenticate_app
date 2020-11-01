@@ -4,15 +4,14 @@ import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 import 'controllers/controllers.dart';
 
-void main()  async {
+void main() async {
   WidgetsFlutterBinding.ensureInitialized();
   await Firebase.initializeApp();
   Get.put<AuthenticatorController>(AuthenticatorController(), permanent: true);
   Get.put<UserController>(UserController());
 
-  runApp(
-      GetMaterialApp(
-                      debugShowCheckedModeBanner:false,
-                      home: Home(),));
+  runApp(GetMaterialApp(
+    debugShowCheckedModeBanner: false,
+    home: Home(),
+  ));
 }
-
